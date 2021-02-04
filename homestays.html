@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Homestays</title>
+    <style>
+
+        body {
+          background-color:#cca6a6;
+        }
+        
+        .header {
+          background-color: #8e5e5f;
+          padding: 5px;
+          text-align: center;
+        }
+        
+        input[type=text], select, textarea {
+          background-color:#e6d1e5;
+          width: 30%;
+          padding: 5px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+        }
+        
+        label {
+          padding: 5px 5px 5px 0;
+          display: inline-block;
+        }
+        
+        input[type=submit] {
+          background-color:#9f7c94;
+          color: black;
+          padding: 5px 5px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          float: center;
+        }
+        
+        </style>
+
+<script>
+    function previewFile() {
+      const preview = document.querySelector('img');
+      const file = document.querySelector('input[type=file]').files[0];
+      const reader = new FileReader();
+  
+      reader.addEventListener("load", function () {
+        // convert image file to base64 string
+        preview.src = reader.result;
+      }, false);
+  
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+    
+    Filevalidation = () => { 
+          const fi = document.getElementById('file'); 
+          // Check if any file is selected. 
+          if (fi.files.length > 0) { 
+              for (const i = 0; i <= fi.files.length - 1; i++) { 
+    
+                  const fsize = fi.files.item(i).size; 
+                  const file = Math.round((fsize / 1024)); 
+                  // The size of the file. 
+                  if (file >= 400) { 
+                      alert( 
+                        "File too Big, please select a file less than 200kb"); 
+                  } else if (file < 10) { 
+                      alert( 
+                        "File too small, please select a file greater than 20kb"); 
+                  } else { 
+                     previewFile();
+                  } 
+              } 
+          } 
+      } 
+  </script>
+    </head>
+  
+  <body>
+  
+    <h2 align="center">Add New Homestays</h2>
+  
+    <form action="homestays.php" enctype="multipart/form-data" method="post" align="center"
+      onsubmit="return confirm('Are you sure you want insert new data?');">
+      
+      <img src="" height="200"><br>
+      <input type="file" onchange="Filevalidation();" class="button" name="uploaded_file" id="file"><br>
+     
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" value="" required><br>
+      
+      <label for="prprice">Price:</label><br>
+      <input type="text" id="prprice" name="prprice" value="" required><br>
+
+      <label for="prdesc">Description:</label><br>
+      <textarea id="prdesc" name="prdesc" rows="4"></textarea><br>
+    
+     
+      <laberfor="prtype">Package:</laberfor=><br>
+      <select id="prtype" name="prtype">
+      <option value="1 Night" title="1 Night">1 Night</option>
+      <option value="2 days 1 Night" title="2 days 1 Night">2 days 1 Night</option>
+      <option value="3 days 2 Night" title="3 days 2 Night">3 days 2 Night</option>
+      <option value="4 days 3 Night" title="4 days 3 Night">4 days 3 Night</option>
+      </select><br>
+  
+      <label for="prloc">Location:</label><br>
+      <select id="prloc" name="prloc">
+      <option value="Raub" title="Raub">Raub</option>
+      <option value="Bentong" title="Bentong">Bentong</option>
+      <option value="Kuantan" title="Kuantan">Kuantan</option>
+      <option value="Temerloh" title="Temerloh">Temerloh</option>
+      <option value="Kuala Lipis" title="Kuala Lipis">Kuala Lipis</option>
+      </select><br>
+      
+      <label for="email">Email:</label><br>
+      <input type="text" id="email" name="email" value="" required><br>
+      
+      <label for="phone">Phone:</label><br>
+      <input type="text" id="phone" name="phone" value="" required><br><br>
+      
+      <input type="submit" value="Submit" class="button">
+    </form>
+
+    <p align="center"><a href="mainpage.php">Update Homestays</a></p>
+    <p align="center"><a href="view.php">View Homestays</a></p>
+  
+  </body>
+  
+  </html>

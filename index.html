@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+
+  <style>
+
+    body {
+      background-color:#E68585;
+    }
+    
+    .header {
+      background-color: #B35252;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    input[type=text], select, textarea {
+      background-color:#EFB1B1;
+      width: 30%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    
+    input[type=password], select, textarea {
+      background-color:#EFB1B1;
+      width: 30%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    
+    label {
+      padding: 5px 5px 5px 0;
+      display: inline-block;
+    }
+    
+    input[type=submit] {
+      background-color:#B35252;
+      color: black;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: center;
+    }
+    
+    </style>
+
+
+</head>
+
+<body>
+  <h1 align="center">Login Page </h1>
+  <p align="center">Please login using valid credentials</p>
+
+  <form action="login.php" method="post" align="center">
+
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email" value="" required><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" value="" required><br><br>
+
+    <input type="submit" value="Submit" class="button">
+  </form>
+  <p align="center">Press login button</p>
+  <p align="center"><a href="register.html">Register new account</a></p>
+</body>
+
+</html>

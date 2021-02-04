@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+      body {
+        background-color:#E68585;
+      }
+      
+      .header {
+        background-color: #B35252;
+        padding: 10px;
+        text-align: center;
+      }
+      
+      input[type=text], select, textarea {
+        background-color:#EFB1B1;
+        width: 30%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
+      
+      input[type=password], select, textarea {
+        background-color:#EFB1B1;
+        width: 30%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
+      
+      label {
+        padding: 5px 5px 5px 0;
+        display: inline-block;
+      }
+      
+      input[type=submit] {
+        background-color:#B35252;
+        color: black;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: center;
+      }
+      
+      </style>
+      
+
+    <script>
+  function previewFile() {
+    const preview = document.querySelector('img');
+    const file = document.querySelector('input[type=file]').files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+      // convert image file to base64 string
+      preview.src = reader.result;
+    }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  Filevalidation = () => { 
+        const fi = document.getElementById('file'); 
+        // Check if any file is selected. 
+        if (fi.files.length > 0) { 
+            for (const i = 0; i <= fi.files.length - 1; i++) { 
+  
+                const fsize = fi.files.item(i).size; 
+                const file = Math.round((fsize / 1024)); 
+                // The size of the file. 
+                if (file >= 200) { 
+                    alert( 
+                      "File too Big, please select a file less than 200kb"); 
+                } else if (file < 10) { 
+                    alert( 
+                      "File too small, please select a file greater than 20kb"); 
+                } else { 
+                   previewFile();
+                } 
+            } 
+        } 
+    } 
+</script>
+
+<title> Register </title>
+
+  </head>
+
+<body>
+
+  <h2 align="center">Registration Form</h2>
+
+  <form action="register.php" enctype="multipart/form-data" method="post" align="center"
+    onsubmit="return confirm('Are you sure you want to register?');">
+    
+    <img src="" height="200"><br>
+    <input type="file" onchange="Filevalidation();" class="button" name="uploaded_file" id="file"><br>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" value="" required><br>
+
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email" value="" required><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" value="" required><br><br>
+
+    <input type="submit" value="Submit" class="button">
+  </form>
+  <p align="center"><a href="index.html">Already register? Login</a></p>
+
+</body>
+
+</html>
